@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <title>Booking Form</title>
 
 </head>
+
 <body onload="setMinDate();">
     <nav>
         <div class="nav-links">
@@ -20,37 +22,37 @@
             <a href="Home.html">AutoMob &#9881;</a>
         </div>
     </nav>
- 
-    <form id="bookingForm">
-        <h1>Make your Service Booking</h1>
-        <div id="form-group">
-            <h3>User Details</h3>
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="text" id="email" placeholder="Email Address" required>
-            <input type="text" id="phone" placeholder="Phone Number" required>
+    <section>
+        <div class="container">
+            <form id="bookingForm">
+                <h1>Make your Service Booking</h1>
+                <div id="form-group">
+                    <h3>User Details</h3>
+                    <input type="text" id="username" placeholder="Username" required>
+                    <input type="text" id="email" placeholder="Email Address" required>
+                    <input type="text" id="phone" placeholder="Phone Number" required>
+                </div>
+                <div id="form-group">
+                    <h3>Car Details</h3>
+                    <input type="text" id="carmodel" placeholder="Car Model" required>
+                    <input type="text" id="carno" placeholder="Car Number" required>
+                    <input type="text" id="chasis" placeholder="Chasis Number" required>
+                </div>
+                <div id="form-group">
+                    <h3>Booking Details</h3>
+                    <select id="services">
+                        <option value="None-Selected">Choose a Service</option>
+                        <option value="preventive-maintenance-service">preventive-maintenance-service</option>
+                        <option value=" body-repair-service">body-repair-service</option>
+                        <option value=" car-care-service">car-care-service</option>
+                    </select>
+                    <input type="date" id="booking_date" name="booking_date" required>
+                    <input type="time" id="booking_time" name="booking_time" required>
+                </div>
+                <input type="submit" value="Submit" id="submitBtn">
+            </form>
         </div>
-        <div id="form-group">
-            <h3>Car Details</h3>
-            <input type="text" id="carmodel" placeholder="Car Model" required>
-            <input type="text" id="carno" placeholder="Car Number" required>
-            <input type="text" id="chasis" placeholder="Chasis Number" required>
-        </div>
-        <div id="form-group">
-            <h3>Bokking Details</h3>
-            <select id="services">
-                <option value="preventive-maintenance-service">Choose a Service</option>
-                <option value="preventive-maintenance-service">preventive-maintenance-service</option>
-                <option value=" body-repair-service">body-repair-service</option>
-                <option value=" car-care-service">car-care-service</option>
-
-
-            </select>
-            <input type="date" id="booking_date" name="booking_date" required>
-            <input type="time" id="booking_time" name="booking_time" required>
-        </div>
-        <input type="submit" value="Submit">
-    </form>
- 
+    </section>
 </body>
 <script>
     // Function to set the minimum date for the date input field
@@ -80,13 +82,13 @@
     var submissions = JSON.parse(localStorage.getItem('submissions')) || [];
 
     //function to save form submission to local storage
-    function saveFormSubmission(submission){
+    function saveFormSubmission(submission) {
         submissions.push(submission);
         localStorage.setItem('submissions', JSON.stringify(submissions));
     }
 
     //function to handle form submission
-    document.getElementById('bookingForm').addEventListener('submit',function(event){
+    document.getElementById('bookingForm').addEventListener('submit', function (event) {
         event.preventDefault();
 
         //Gather Form Values
@@ -103,16 +105,16 @@
         var booking_time = document.getElementById("booking_time").value;
 
         //create submission object
-        var submission={
-            username : username,
-            email : email,
-            phone : phone,
-            carmodel : carmodel,
-            carno : carno,
-            chasis : chasis,
-            service : service,
+        var submission = {
+            username: username,
+            email: email,
+            phone: phone,
+            carmodel: carmodel,
+            carno: carno,
+            chasis: chasis,
+            service: service,
             booking_date: booking_date,
-            booking_time : booking_time
+            booking_time: booking_time
         };
 
         //save submission to local storage
@@ -124,22 +126,100 @@
         window.location.href = "booking-success.html";
     });
     var loggedIn = sessionStorage.getItem('loggedIn');
-if (loggedIn === "true") {
-    // User is logged in
-    var username = sessionStorage.getItem('username');
-    // Display username and logout option
-    document.getElementById('user-menu').innerHTML = '<a href="" onclick="userDetails()"><i class="fas fa-user"></i> ' + username +'</a>';
-    document.getElementById('user-menu').style.display = 'block';
-}
-function userDetails(){
-    alert("User Name : "+ username +"\nUser Role : "+userRole+"\nStatus : Logged in");
-}
+    if (loggedIn === "true") {
+        // User is logged in
+        var username = sessionStorage.getItem('username');
+        // Display username and logout option
+        document.getElementById('user-menu').innerHTML = '<a href="" onclick="userDetails()"><i class="fas fa-user"></i> ' + username + '</a>';
+        document.getElementById('user-menu').style.display = 'block';
+    }
+    function userDetails() {
+        alert("User Name : " + username + "\nUser Role : " + userRole + "\nStatus : Logged in");
+    }
 
 </script>
 <style>
+section{
+        
+        align-content: center;
+        justify-content: center;
+        display: flex;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        height: 80vh;
+    }
+    .container{
+        border: 1px solid black;
+        height: 500px;
+        width: 700px;
+        border-radius: 20px;
+        align-content: center;
+        justify-content: center;
+        display: flex;
+        text-align: center;
+        background-color: #113f67;
+        color: aliceblue;
+        text-shadow: 0px 0px 5px aqua;
+    }
+    .container:hover{
+        box-shadow: 0px 0px 10px aqua;
+        transition: 1s;
+        background-color:lightblue;
+        color: #113f67;
+        text-shadow: 0px 0px 5px #113f67;
+    }
 
+    
+    .container div input{
+        height: 30px;
+        width: 200px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 20px;
+        box-shadow: 0px 0px 10px rgb(0, 7, 7);
+        transition: 1s;
+        color: gray;
+    }
+    .container div input:hover{
+        box-shadow: 0px 0px 10px aqua;
+        transition: 1s;
+    }
+
+
+    .container div{
+        margin: 5px;
+        padding: 10px;
+    }
+
+    select{
+        height: 30px;
+    width: 200px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 20px;
+    box-shadow: 0px 0px 10px rgb(0, 7, 7);
+        transition: 1s;
+        color: gray;
+    }
+
+    #submitBtn{
+        height: 40px;
+        width: 100px;
+        font-size: 15px;
+        margin: 5px;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px black;
+        transition: 1s;
+    }
+    #submitBtn:hover{
+        box-shadow: 0px 0px 10px aqua;
+        transition: 1s;
+    }
 </style>
 
+
+    
 
 
 </html>
