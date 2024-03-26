@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="common.js"></script>
+    <title>Services</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <ul>
+                <li id="user-menu" style="display: none;"><a href=""></a></li>
+            </ul>
+        </div>
+        <div class="logo">
+            <a href="Home.html">AutoMob &#9881;</a>
+        </div>
+    </nav>
+    <h1>Services Offered</h1>
+
+    <div id="services">
+        <div>
+            <h2>Preventive Maintenance Service</h2>
+            <button onclick="redirectToService('preventive-maintenance-service')">More Details</button>
+        </div>
+        <div>
+            <h2>Body Repair Service</h2>
+            <button onclick="redirectToService('body-repair-service')">More Details</button>
+        </div>
+        <div>
+            <h2>Car Care Service</h2>
+            <button onclick="redirectToService('car-care-service')">More Details</button>
+        </div>
+    </div>
+
+    <div id="countdown">
+        Offer expires in: <span id="timer">10:00</span>
+    </div>
+
+    <script>
+        // Countdown timer
+        var countdown = document.getElementById("timer");
+        var timer = 600; // 10 minutes in seconds
+
+        function updateTimer() {
+            var minutes = Math.floor(timer / 60);
+            var seconds = timer % 60;
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            countdown.textContent = minutes + ":" + seconds;
+
+            if (timer > 0) {
+                timer--;
+                setTimeout(updateTimer, 1000);
+            } else {
+                countdown.textContent = "Offer expired";
+            }
+        }
+
+        updateTimer();
+
+        // Function to redirect to service page
+        function redirectToService(serviceName) {
+            window.location.href = serviceName + ".html"; // Assuming each service has its own HTML page
+        }
+
+
+        var loggedIn = sessionStorage.getItem('loggedIn');
+        if (loggedIn === "true") {
+            // User is logged in
+            var username = sessionStorage.getItem('username');
+            // Display username and logout option
+            document.getElementById('user-menu').innerHTML = '<a href="" onclick="userDetails()"><i class="fas fa-user"></i> ' + username +'</a>';
+            document.getElementById('user-menu').style.display = 'block';
+        }
+        function userDetails(){
+            alert("User Name : "+ username +"\nUser Role : "+userRole+"\nStatus : Logged in");
+        }
+    </script>
+</body>
+<style>
+  
+</style>
+</html>

@@ -1,0 +1,6 @@
+function back(){
+    window.location.href = "service.html";
+}
+function reroute(){
+    window.location.href = "bookings.html";
+}

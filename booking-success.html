@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="common.js"></script>
+    <title>AutoMob-Booking Success</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <ul>
+                <li id="user-menu" style="display: none;"><a href=""></a></li>
+            </ul>
+        </div>
+        <div class="logo">
+            <a href="Home.html">AutoMob &#9881;</a>
+        </div>
+    </nav>
+    <H1>Booking Success</H1>
+</body>
+<style>
+    
+</style>
+<script>
+    var loggedIn = sessionStorage.getItem('loggedIn');
+if (loggedIn === "true") {
+    // User is logged in
+    var username = sessionStorage.getItem('username');
+    // Display username and logout option
+    document.getElementById('user-menu').innerHTML = '<a href="" onclick="userDetails()"><i class="fas fa-user"></i> ' + username +'</a>';
+    document.getElementById('user-menu').style.display = 'block';
+}
+function userDetails(){
+    alert("User Name : "+ username +"\nUser Role : "+userRole+"\nStatus : Logged in");
+}
+</script>
+</html>
